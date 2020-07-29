@@ -23,9 +23,9 @@ class EthosApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Ethos Lab - Hogwarts meets Wakanda!',
       theme: ThemeData(primarySwatch: Colors.teal),
-      home: MainScreen(),
-      routes: {
-        '/': (context) => MyHomePage(), //The home screen contains log-in
+      home: MainScreen(), //becomes the route named '/'
+      routes: <String, WidgetBuilder> {
+        '/homepage': (context) => MyHomePage(), //The home screen contains log-in
         '/signup': (context) => SignUpScreen(), //Takes user to sign up screen 
         '/userdashboard': (context) => ChildProfilePage(), //user dashboard route 
       },

@@ -40,7 +40,8 @@ class _SignUpFormState extends State<SignUpForm> {
   double _formProgress = 0;
   
   void _showWelcomeScreen() {
-    Navigator.of(context).pushNamed('/welcome');              
+    Navigator.of(context).pushNamed('/userdashboard');
+    //Navigator.of(context).pushNamed('/welcome');              
   }
 
   //allow us track user's progress in filling out form
@@ -130,12 +131,13 @@ class _SignUpFormState extends State<SignUpForm> {
           
           //a flat button with a blue background
           FlatButton(
+            
             color: Colors.blue,
             textColor: Colors.white,
             onPressed:  _formProgress == 1 ? _showWelcomeScreen : null,
-            //onPressed: _showWelcomeScreen,
-                        //onPressed: null,
+            
                         child: Text('Sign up'),
+                        
                       ),
                     
                     ],

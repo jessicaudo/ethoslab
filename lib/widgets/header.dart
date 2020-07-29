@@ -22,7 +22,6 @@ class HeaderWidget extends StatefulWidget {
 
 class _HeaderWidgetState extends State<HeaderWidget> {
   var links = ["Home", "EthosLab", "Events", "GitHub"];
-  //var links = ["Home", "Github", "Videos", "Jobs"];
 
   @override
   Widget build(BuildContext context) {
@@ -139,7 +138,8 @@ class _HeaderWidgetState extends State<HeaderWidget> {
       padding: EdgeInsets.all(8.0),
       child: InkWell(
         onTap: () {
-          Navigator.of(context).pushNamed('/SignUpForm');
+          Navigator.pushNamed(context, '/signup');
+          //Navigator.of(context).pushNamed('/SignUpForm');
           //Navigator.pushNamed(context, router.FIREBASE_LOGIN);
         },
 
