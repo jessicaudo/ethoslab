@@ -33,6 +33,14 @@ dependencies:
   #adds the universal_html dependency supporting html
   universal_html: ^1.2.1
 
+  #add flutter web scroller
+  flutter_web_scrollbar: ^0.0.2
+
+  #adding flutter sticky header
+  flutter_sticky_header: "^0.4.5"
+
+  sticky_headers: "^0.1.7"
+
 
 
 

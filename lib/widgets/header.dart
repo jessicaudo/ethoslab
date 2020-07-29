@@ -24,8 +24,9 @@ class _HeaderWidgetState extends State<HeaderWidget> {
 
   @override
   Widget build(BuildContext context) {
+    
     return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 45, vertical: 38),
+      padding: EdgeInsets.symmetric(horizontal: 45, vertical: 28), //prev vertical 38
       child: buildHeader(context),
     );
   }
@@ -48,14 +49,16 @@ class _HeaderWidgetState extends State<HeaderWidget> {
     } else { //for small screeen
       return PopupMenuButton(
         //child: Image.network("assets/menu.png", width: 25, height: 25),
-        //child: Image.asset("images/menu.png", width: 25, height: 25),
+        //child: Image.asset("images/menu.png", width: 25, height: 25), //changed from 25
         child: Image.asset(Strings.menuImage, width: 25, height: 25),
         onSelected: (NavLinks value) {
           setState(() {
             openLink(value);
           });
         },
+        
         itemBuilder: (BuildContext context) => <PopupMenuEntry<NavLinks>>[
+         
           const PopupMenuItem(
           value: NavLinks.Home, 
           child: Text(
@@ -136,6 +139,8 @@ class _HeaderWidgetState extends State<HeaderWidget> {
     if (link == NavLinks.Home) {
       //Back to homepage
       //TO-DO: need to set up homepage to persist user log-in info
+      
+      //Navigator.of(context).pushNamed('/homepage');
       Navigator.of(context).pushNamed('/userdashboard');
     }else if (link == NavLinks.Support) {
       //open Support page
@@ -233,11 +238,11 @@ class _HeaderWidgetState extends State<HeaderWidget> {
     return Row(
       children: <Widget>[
         Container(
-          width: 50,
-          height: 50,
+          width: 120,
+          height: 90,
           child: Center(
-            child: Image.asset(Strings.logoImage)
-            //child: Image.asset('images/bird.jpg'),
+            //child: Image.asset(Strings.logoImage)
+            child: Image.asset('images/ethosLogo.jpg'),
             //change to Atlanthos logo
           ),
         ),
@@ -245,10 +250,11 @@ class _HeaderWidgetState extends State<HeaderWidget> {
         SizedBox(
           width: 16,
         ),
-        Text(
-          Strings.appTitle,
-          style: TextStyle(fontSize: 26),
-        )
+        //Text(
+          //Strings.logoImage,
+          //Strings.appTitle,
+          //style: TextStyle(fontSize: 26),
+        //)
       ],
     );
   }
