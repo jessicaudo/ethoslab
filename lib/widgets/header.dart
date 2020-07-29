@@ -6,7 +6,6 @@
 import 'package:ethoslab/plugins/url_launcher/web.dart';
 import 'package:ethoslab/utils/responsive_widget.dart';
 import 'package:flutter/material.dart';
-//import 'package:landingpage/plugins/url_launcher/url_launcher.dart';
 //import 'package:landingpage/router.dart' as router;
 import 'package:ethoslab/utils/myColors.dart';
 import 'package:ethoslab/utils/strings.dart';
@@ -21,7 +20,7 @@ class HeaderWidget extends StatefulWidget {
 
 
 class _HeaderWidgetState extends State<HeaderWidget> {
-  var links = ["Home", "EthosLab", "Events", "GitHub"];
+  var links = ["Home", "Ethos Lab", "Events", "GitHub", "Support"];
 
   @override
   Widget build(BuildContext context) {
@@ -40,28 +39,67 @@ class _HeaderWidgetState extends State<HeaderWidget> {
 
   //Builds navigation links at the right top of landing page
   Widget buildHeaderLinks(BuildContext context) {
+    //for medium and large screen, regular view
     if (!ResponsiveWidget.isSmallScreen(context)) {
       return Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: getLinksListing(context)..add(buildLoginButton(context)),
       );
-    } else {
+    } else { //for small screeen
       return PopupMenuButton(
         //child: Image.network("assets/menu.png", width: 25, height: 25),
-        child: Image.asset("images/menu.png", width: 25, height: 25),
+        //child: Image.asset("images/menu.png", width: 25, height: 25),
+        child: Image.asset(Strings.menuImage, width: 25, height: 25),
         onSelected: (NavLinks value) {
           setState(() {
             openLink(value);
           });
         },
         itemBuilder: (BuildContext context) => <PopupMenuEntry<NavLinks>>[
-          const PopupMenuItem(value: NavLinks.Home, child: Text("Home")),
-          const PopupMenuItem(value: NavLinks.GitHub, child: Text("Github")),
-          const PopupMenuItem(value: NavLinks.EthosLab, child: Text("Ethos Lab")),
-          const PopupMenuItem(value: NavLinks.Events, child: Text("Events")),
+          const PopupMenuItem(
+          value: NavLinks.Home, 
+          child: Text(
+            "Home", 
+            style: 
+            TextStyle(fontFamily: 'Montserrat-Regular', fontSize: 20),
+          )),
+          
+           const PopupMenuItem(
+              value: NavLinks.EthosLab,
+              child: Text(
+                "Ethos Lab",
+                style:
+                    TextStyle(fontFamily: 'Montserrat-Regular', fontSize: 20),
+              )),
+          
+          const PopupMenuItem(
+              value: NavLinks.Events,
+              child: Text("Events",
+                  style: TextStyle(
+                      fontFamily: 'Montserrat-Regular', fontSize: 20))),
+          
+          const PopupMenuItem(
+              value: NavLinks.GitHub,
+              child: Text("GitHub",
+                  style: TextStyle(
+                      fontFamily: 'Montserrat-Regular', fontSize: 20))),
+          
+          const PopupMenuItem(
+              value: NavLinks.Support,
+              child: Text("Support",
+                  style: TextStyle(
+                      fontFamily: 'Montserrat-Regular', fontSize: 20))),
+          
           PopupMenuItem(value: NavLinks.LogIn, child: buildLoginButton(context))
+
+          // const PopupMenuItem(value: NavLinks.EthosLab, child: Text("Ethos Lab")),
+          // const PopupMenuItem(value: NavLinks.Events, child: Text("Events")),
+          // const PopupMenuItem(value: NavLinks.GitHub, child: Text("Github")),
+          // const PopupMenuItem(value: NavLinks.Support, child: Text("Support Us")),
+          // PopupMenuItem(value: NavLinks.LogIn, child: buildLoginButton(context))
         ],
       );
+    
     }
   }
 
@@ -69,7 +107,7 @@ class _HeaderWidgetState extends State<HeaderWidget> {
     return link != NavLinks.LogIn;
   }
 
-  //Builds navigation list for header
+  //Builds navigation list for header when in small screen
   List<Widget> getLinksListing(BuildContext context) {
     return NavLinks.values.where((link) => link != NavLinks.LogIn).map((link) {
       return Padding(
@@ -78,24 +116,35 @@ class _HeaderWidgetState extends State<HeaderWidget> {
               hoverColor: Theme.of(context).primaryColor,
               highlightColor: Theme.of(context).secondaryHeaderColor,
               splashColor: Theme.of(context).primaryColor,
-              borderRadius: BorderRadius.circular(10.0),
+              borderRadius: BorderRadius.circular(10.0), //change frm 10 to 20
               child: Text(
                 displayString(link),
-                style: Theme.of(context).textTheme.title,
-                //style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
+               // style: Theme.of(context).textTheme.title,
+                style: TextStyle(
+                  fontFamily: 'Montserrat-Regular',
+                  fontSize: 15, //changed from 15 to 20
+                  fontWeight: FontWeight.normal),
               ),
               onTap: () {
-                openLink(link);
+                openLink(link);//automatically just opens link in new tab
               }));
     }).toList();
   }
 
   void openLink(NavLinks link) {
     //return null;
-    if (link == NavLinks.Support) {
+    if (link == NavLinks.Home) {
+      //Back to homepage
+      //TO-DO: need to set up homepage to persist user log-in info
+      Navigator.of(context).pushNamed('/userdashboard');
+    }else if (link == NavLinks.Support) {
       //open Support page
+      Navigator.of(context).pushNamed('/support');
+    } else if (link == NavLinks.Events) {
+      //open Events calendar page
       //Navigator.pushNamed(context, router.FLUTTER_RESOURCES);
-      return null;
+      Navigator.of(context).pushNamed('/events');
+      //return null;
     } else {
       UrlUtils.open(getTargetUrl(link), name: displayString(link));
       //html.window.open(getTargetUrl(link), displayString(link));
@@ -111,15 +160,20 @@ class _HeaderWidgetState extends State<HeaderWidget> {
         //change to Homepage url 
         break;
 
-      case NavLinks.GitHub:
-        url = "https://github.com/jessicaudo/ethoslab";
-        break;
-
       case NavLinks.EthosLab:
         url = "https://www.ethoslab.space/";
           break;
 
       case NavLinks.Events:
+        url = "https://www.ethoslab.space/";
+        //change to public calendar
+          break;
+      
+      case NavLinks.GitHub:
+        url = "https://github.com/jessicaudo/ethoslab";
+        break;
+
+      case NavLinks.Support:
         url = "https://www.ethoslab.space/";
         //change to public calendar
         break;
@@ -128,7 +182,7 @@ class _HeaderWidgetState extends State<HeaderWidget> {
         url = "https://flutter-to-fly.firebaseapp.com";
         //check what default url is
     }
-    print("url: " + url);
+    //print("url: " + url);
     return url;
   }
 

@@ -1,6 +1,8 @@
 //import 'package:ethoslab/home.dart';
 //import 'package:ethoslab/login_web/child_profile.dart';
 //import 'package:ethoslab/login_web/login_page.dart';
+import 'package:ethoslab/login_web/public_events.dart';
+import 'package:ethoslab/login_web/support_page.dart';
 import 'package:ethoslab/widgets/header.dart';
 import 'package:flutter/material.dart';
 
@@ -28,6 +30,8 @@ class EthosApp extends StatelessWidget {
         '/homepage': (context) => MyHomePage(), //The home screen contains log-in
         '/signup': (context) => SignUpScreen(), //Takes user to sign up screen 
         '/userdashboard': (context) => ChildProfilePage(), //user dashboard route 
+        '/events' : (context) => PublicEventsPage(), //Public calendar page of upcoming events
+        '/support' : (context) => SupportPage(), //Find ways to partner with and support Ethos Lab
       },
     );
   }

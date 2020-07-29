@@ -41,9 +41,9 @@ class ResponsiveWidget extends StatelessWidget {
     return getShortestSide(context) < 800;
   }
 
-  //Medium screen is any screen whose width is less than 1200 pixels,
-  //and more than 800 pixels
-  static bool isMediumScreen(BuildContext context) {
-    return getShortestSide(context) > 800 && getShortestSide(context) < 1200;
-  }
+  // //Medium screen is any screen whose width is less than 1200 pixels,
+  // //and more than 800 pixels
+   static bool isMediumScreen(BuildContext context) {
+     return getShortestSide(context) > 800 && getShortestSide(context) < 1200;
+   }
 }
