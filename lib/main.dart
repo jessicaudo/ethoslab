@@ -11,19 +11,12 @@ import 'package:flutter_web_scrollbar/flutter_web_scrollbar.dart';
 import 'home.dart';
 import 'login_web/child_profile.dart';
 import 'login_web/login_page.dart';
-import 'package:sticky_headers/sticky_headers.dart';
-//import 'package:landingpage/utils/themes.dart';
+
 void main() => runApp(EthosApp());
-//main app class
+
 
 class EthosApp extends StatelessWidget { //now stateful 'coz scrollbar
  
-  // LandingPage({Key key}) : super(key: key);
-
-  // @override
-  // State<StatefulWidget> createState() {
-  //   return _LandingPageState();
-  // }
 
   @override
   Widget build(BuildContext context) {
@@ -74,31 +67,18 @@ class _MainScreenState extends State<MainScreen> {
     setState(() {  
       // Note: 3.5 represents the theoretical height of all my scrollable content. This number will vary for you.  
        //_controller.position.moveTo(dragUpdate.globalPosition.dy * 3.5);  
-       _controller.position.moveTo(dragUpdate.globalPosition.dy * 20);
+       _controller.position.moveTo(dragUpdate.globalPosition.dy * 3.5);
     });  
   }  
 
   @override
   Widget build(BuildContext context) {
-   // int _currentIndex = 0;
-    //final List<Widget> _children = [];
-        var currentIndex;
+  
                 return Scaffold(
-                       
-                //appBar: AppBar(
-                //   title: Text('Ethos'), //maybe change to Atlanthos
-                //   centerTitle: true,
-                //   //add logo and name on left, and can redirect to ethos lab home page
-                // ),
-            
-                //body: Center(
+               
                 backgroundColor:  Colors.white, //prev .white
                 body: Stack(
-                //body: SingleChildScrollView(
-                
-                //part of old arch //child: Column(
-                //children: <Widget>[HeaderWidget()],
-                //mainAxisAlignment: MainAxisAlignment.center,
+        
                 
                 children: <Widget>[
                       Container(
@@ -107,33 +87,30 @@ class _MainScreenState extends State<MainScreen> {
                           controller: _controller,  
                           child: Column(  
                             children: [ 
-                              //return new StickyHeader(
-                              //  header: 
-                                
+                             
                                  HeaderWidget(),
-                              // )
+                          
                               
                               Container(
                                  
-                                    //width: 800.0, //change from 200 
-                                    //height: 200.0,
-                                    
-                                  //height: MediaQuery.of(context).size.height,
                                 width: 800, //change from 200
                                 height: 200.0,
-                                  decoration: BoxDecoration(
-                                  shape: BoxShape.rectangle,
-                                  
-                                  //shape: BoxShape.circle,
-                                    //mainAxisAlignment: MainAxisAlignment.center,
-                                      image: DecorationImage(
-                                      fit: BoxFit.cover,
+                                
+      
+     // new Text("Ethọ́s Lab exists to empower youth to transform community and shift culture."),
+
+
+                                decoration: BoxDecoration(
+                                shape: BoxShape.rectangle,
+                               image: DecorationImage(
+                               fit: BoxFit.cover,
                                       
                                       //image: new NetworkImage('images/ethosLogo.jpg'),
-                                       image: new NetworkImage(
-                                      "https://static1.squarespace.com/static/5d1e0e9d2a98da000182d011/t/5e549279b2919a79f2a866d4/1595529564053/?format=1500w"
+                                      image: new NetworkImage(
+                                     "https://static1.squarespace.com/static/5d1e0e9d2a98da000182d011/t/5e549279b2919a79f2a866d4/1595529564053/?format=1500w"
                                 //change image to app logo
-                                )
+                               )
+  //],
                                 ))),
                                 
                                 Container(
@@ -145,13 +122,144 @@ class _MainScreenState extends State<MainScreen> {
                                     //'youth space reimagined',
                                     style: TextStyle(fontSize: 24.0, fontWeight: FontWeight.bold),
                                     ),
+                      
                                   ),
-                                
-                                Container(  //mediaquery gets responsive height of screen
-                                height: MediaQuery.of(context).size.height,  
+                                  
+                                  
+                                  Container(
+                                 
+                                  padding: const EdgeInsets.all(20.0),
+                                  alignment: Alignment.centerLeft,
+                                  child: 
+                                  Text(
+                                    'Our Mission',
+                                    //'youth space reimagined',
+                                    style: TextStyle(
+                                      fontSize: 24.0, 
+                                      foreground: Paint()
+                                      ..style = PaintingStyle.stroke
+                                      ..strokeWidth = 6
+                                      ..color = Colors.teal[700],
+                                    ),
+                                    //fontWeight: FontWeight.bold),
+                                    ),
+
+                                  ),
+                                  
+                              Container(  //mediaquery gets responsive height of screen
+                                height: 250,  
+                                width: MediaQuery.of(context).size.width,  
+                                color: Colors.black,  
+                                 padding: const EdgeInsets.all(20.0),
+                                alignment: Alignment.center,
+                                child: 
+                                 Text(
+                                    'The Ethos Lab exists to foster cultural innovation for youth aged 13 - 18, by providing a safe and accessible tech-infused environment that allows them explore the fullest expressions of their authentic selves. \n\nLeveraging the "Internet of Things", applications, web-based tools and other technology, these environments will address the need for youth to own a stake in their digital future. \n\nOur Vision is that all youth are free to explore the fullest expressions of their authentic selves. ',
+                                    //'youth space reimagined',
+                                    style: TextStyle(
+                                      fontSize: 18.0, 
+                                      foreground: Paint()
+                                      ..style = PaintingStyle.stroke
+                                      ..strokeWidth = 6
+                                      ..color = Colors.white,
+                                    ),
+                                    //fontWeight: FontWeight.bold),
+                                    ),
+
+                              ),
+                              
+                              Container(  //mediaquery gets responsive height of screen
+                                height: 400,  
                                 width: MediaQuery.of(context).size.width,  
                                 color: Colors.teal,  
-                              ),  
+                                //first row showing images
+                                child: new Row(
+       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+  children: [
+    Image.asset('images/Cleo_2007165883.jpg'),
+    Image.asset('images/Deqa_2007165883.jpg'),
+  ],
+      ),
+                                ),
+
+                               //repeating the above
+                               //re-do to show column and row within column
+                                Container(
+                                 
+                                  padding: const EdgeInsets.all(20.0),
+                                  alignment: Alignment.centerLeft,
+                                  child: 
+                                  Text(
+                                    'Our Journey',
+                                    //'youth space reimagined',
+                                    style: TextStyle(
+                                      fontSize: 24.0, 
+                                      foreground: Paint()
+                                      ..style = PaintingStyle.stroke
+                                      ..strokeWidth = 6
+                                      ..color = Colors.teal[700],
+                                    ),
+                                    //fontWeight: FontWeight.bold),
+                                    ),
+
+                                  ),
+                                  
+                              Container(  //mediaquery gets responsive height of screen
+                                height: 200,  
+                                width: MediaQuery.of(context).size.width,  
+                                color: Colors.black,  
+                                 padding: const EdgeInsets.all(20.0),
+                                alignment: Alignment.centerLeft,
+                                child: 
+                                 Text(
+                                    'Starting off as a physical space...  ',
+                                    //'youth space reimagined',
+                                    style: TextStyle(
+                                      fontSize: 18.0, 
+                                      foreground: Paint()
+                                      ..style = PaintingStyle.stroke
+                                      ..strokeWidth = 6
+                                      ..color = Colors.white,
+                                    ),
+                                    //fontWeight: FontWeight.bold),
+                                    ),
+
+                              ),
+                              
+                              Container(  //mediaquery gets responsive height of screen
+                                height: 400,  
+                                width: MediaQuery.of(context).size.width,  
+                                color: Colors.teal,  
+                                //first row showing images
+                                child: new Row(
+       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+  children: [
+    Image.asset('images/EthosLabMarylou 1_2007165883.jpg'),
+    Image.asset('images/image 5_2007165883.jpg'),
+  ],
+      ),
+                                ),
+                              
+                              Container(  //mediaquery gets responsive height of screen
+                                height: 400,  
+                                width: MediaQuery.of(context).size.width,  
+                                color: Colors.teal,  
+                                //first row showing images
+                                child: new Row(
+                                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                   children: [
+                                     Image.asset('images/EthosLabMarylou 1_2007165883.jpg'),
+                                     Image.asset('images/image 5_2007165883.jpg'),
+                                     ],
+                                     ),
+                                ),
+
+                                
+                              //   Container(  //mediaquery gets responsive height of screen
+                              //   height: MediaQuery.of(context).size.height,  
+                              //   width: MediaQuery.of(context).size.width,  
+                              //   color: Colors.teal,  
+                              // ),  
                             
                             ],
                           ),
