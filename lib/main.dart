@@ -80,93 +80,126 @@ class _MainScreenState extends State<MainScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-           
-    //appBar: AppBar(
-    //   title: Text('Ethos'), //maybe change to Atlanthos
-    //   centerTitle: true,
-    //   //add logo and name on left, and can redirect to ethos lab home page
-    // ),
-
-    //body: Center(
-    backgroundColor:  Colors.white, //prev .white
-    body: Stack(
-    //body: SingleChildScrollView(
-    
-    //part of old arch //child: Column(
-    //children: <Widget>[HeaderWidget()],
-    //mainAxisAlignment: MainAxisAlignment.center,
-    
-    children: <Widget>[
-          Container(
-          child: SingleChildScrollView(
-              //Assign the controller to my scrollable widget  
-              controller: _controller,  
-              child: Column(  
-                children: [ 
-                  //return new StickyHeader(
-                  //  header: 
-                    
-                     HeaderWidget(),
-                  // )
-                  
-                  Container(
-                     
-                        //width: 800.0, //change from 200 
-                        //height: 200.0,
-                        
-                      //height: MediaQuery.of(context).size.height,
-                    width: 800, //change from 200
-                    height: 200.0,
-                      decoration: BoxDecoration(
-                      shape: BoxShape.rectangle,
-                      
-                      //shape: BoxShape.circle,
-                        //mainAxisAlignment: MainAxisAlignment.center,
-                          image: DecorationImage(
-                          fit: BoxFit.cover,
-                          
-                          //image: new NetworkImage('images/ethosLogo.jpg'),
-                           image: new NetworkImage(
-                          "https://static1.squarespace.com/static/5d1e0e9d2a98da000182d011/t/5e549279b2919a79f2a866d4/1595529564053/?format=1500w"
-                    //change image to app logo
-                    )
-                    ))),
-                    
-                    Container(
-                     
-                      padding: const EdgeInsets.all(20.0),
-                      
-                      child: Text(
-                        'Hogwarts x Wakanda',
-                        //'youth space reimagined',
-                        style: TextStyle(fontSize: 24.0, fontWeight: FontWeight.bold),
-                        ),
-                      ),
-                    
-                    Container(  //mediaquery gets responsive height of screen
-                    height: MediaQuery.of(context).size.height,  
-                    width: MediaQuery.of(context).size.width,  
-                    color: Colors.teal,  
-                  ),  
+   // int _currentIndex = 0;
+    //final List<Widget> _children = [];
+        var currentIndex;
+                return Scaffold(
+                       
+                //appBar: AppBar(
+                //   title: Text('Ethos'), //maybe change to Atlanthos
+                //   centerTitle: true,
+                //   //add logo and name on left, and can redirect to ethos lab home page
+                // ),
+            
+                //body: Center(
+                backgroundColor:  Colors.white, //prev .white
+                body: Stack(
+                //body: SingleChildScrollView(
                 
-                ],
-              ),
-          ),
-        ),
-        
-        FlutterWebScroller(
-          scrollCallBack, 
-          scrollBarBackgroundColor: Colors.white,
-          scrollBarWidth: 20.0, 
-          //scrollBarHeight: 200.0,
-          dragHandleColor: Colors.grey,  
-          dragHandleBorderRadius: 3.0,  
-          dragHandleHeight: 40.0,  
-          dragHandleWidth: 20.0, //changed from 15 to 20
-          ),  
-        ],  
-      ),  
+                //part of old arch //child: Column(
+                //children: <Widget>[HeaderWidget()],
+                //mainAxisAlignment: MainAxisAlignment.center,
+                
+                children: <Widget>[
+                      Container(
+                      child: SingleChildScrollView(
+                          //Assign the controller to my scrollable widget  
+                          controller: _controller,  
+                          child: Column(  
+                            children: [ 
+                              //return new StickyHeader(
+                              //  header: 
+                                
+                                 HeaderWidget(),
+                              // )
+                              
+                              Container(
+                                 
+                                    //width: 800.0, //change from 200 
+                                    //height: 200.0,
+                                    
+                                  //height: MediaQuery.of(context).size.height,
+                                width: 800, //change from 200
+                                height: 200.0,
+                                  decoration: BoxDecoration(
+                                  shape: BoxShape.rectangle,
+                                  
+                                  //shape: BoxShape.circle,
+                                    //mainAxisAlignment: MainAxisAlignment.center,
+                                      image: DecorationImage(
+                                      fit: BoxFit.cover,
+                                      
+                                      //image: new NetworkImage('images/ethosLogo.jpg'),
+                                       image: new NetworkImage(
+                                      "https://static1.squarespace.com/static/5d1e0e9d2a98da000182d011/t/5e549279b2919a79f2a866d4/1595529564053/?format=1500w"
+                                //change image to app logo
+                                )
+                                ))),
+                                
+                                Container(
+                                 
+                                  padding: const EdgeInsets.all(20.0),
+                                  
+                                  child: Text(
+                                    'Hogwarts x Wakanda',
+                                    //'youth space reimagined',
+                                    style: TextStyle(fontSize: 24.0, fontWeight: FontWeight.bold),
+                                    ),
+                                  ),
+                                
+                                Container(  //mediaquery gets responsive height of screen
+                                height: MediaQuery.of(context).size.height,  
+                                width: MediaQuery.of(context).size.width,  
+                                color: Colors.teal,  
+                              ),  
+                            
+                            ],
+                          ),
+                      ),
+                    ),
+                    
+                    FlutterWebScroller(
+                      scrollCallBack, 
+                      scrollBarBackgroundColor: Colors.white,
+                      scrollBarWidth: 20.0, 
+                      //scrollBarHeight: 200.0,
+                      dragHandleColor: Colors.grey,  
+                      dragHandleBorderRadius: 3.0,  
+                      dragHandleHeight: 40.0,  
+                      dragHandleWidth: 20.0, //changed from 15 to 20
+                      ),  
+                    ],  
+                  ),  
+                 
+       //can edit this and even make it a side bar for other tabs
+       bottomNavigationBar: BottomNavigationBar(
+       currentIndex: 0, // this will be set when a new tab is tapped
+       items: [
+         BottomNavigationBarItem(
+           icon: new Icon(Icons.assessment),
+           title: new Text('Privacy & Legal Policies'),
+           
+         ),
+         BottomNavigationBarItem(
+           icon: new Icon(Icons.mail),
+           title: new Text('Contact Us'),
+         ),
+         BottomNavigationBarItem(
+           icon: new Icon(Icons.report_problem),
+           title: new Text('Report Problem')
+         ),
+         
+       ],
+     ),
+
+     floatingActionButton: FloatingActionButton(
+       child: Icon(Icons.arrow_upward),
+       backgroundColor: Colors.orangeAccent,
+       onPressed: (){
+         print ("floating back to top button pressed");
+
+       }
+       ),
     );  
   }  
 }
