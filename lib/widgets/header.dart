@@ -26,14 +26,18 @@ class _HeaderWidgetState extends State<HeaderWidget> {
   Widget build(BuildContext context) {
     
     return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 45, vertical: 28), //prev vertical 38
+      padding: EdgeInsets.symmetric(horizontal: 45, vertical: 38), //prev vertical 38
       child: buildHeader(context),
     );
   }
 
   Widget buildHeader(BuildContext context) {
-    return Row(
+      return Row(
+       // padding: EdgeInsets.zero,
+      //return MediaQuery.removePadding(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      //margin: EdgeInsets.all(0),
+      //padding: const EdgeInsets.symmetric(vertical: 16),
       children: <Widget>[buildLogo(context), buildHeaderLinks(context)],
     );
   }
@@ -50,7 +54,7 @@ class _HeaderWidgetState extends State<HeaderWidget> {
       return PopupMenuButton(
         //child: Image.network("assets/menu.png", width: 25, height: 25),
         //child: Image.asset("images/menu.png", width: 25, height: 25), //changed from 25
-        child: Image.asset(Strings.menuImage, width: 25, height: 25),
+        child: Image.asset(Strings.menuImage, width: 25, height: 20), //changr from 25 to 15
         onSelected: (NavLinks value) {
           setState(() {
             openLink(value);
@@ -70,7 +74,7 @@ class _HeaderWidgetState extends State<HeaderWidget> {
            const PopupMenuItem(
               value: NavLinks.EthosLab,
               child: Text(
-                "Ethos Lab",
+                "Ethos Labs",
                 style:
                     TextStyle(fontFamily: 'Montserrat-Regular', fontSize: 20),
               )),
@@ -119,7 +123,7 @@ class _HeaderWidgetState extends State<HeaderWidget> {
               hoverColor: Theme.of(context).primaryColor,
               highlightColor: Theme.of(context).secondaryHeaderColor,
               splashColor: Theme.of(context).primaryColor,
-              borderRadius: BorderRadius.circular(10.0), //change frm 10 to 20
+              borderRadius: BorderRadius.circular(20.0), //change frm 10 to 20
               child: Text(
                 displayString(link),
                // style: Theme.of(context).textTheme.title,

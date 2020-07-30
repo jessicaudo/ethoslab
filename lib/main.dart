@@ -29,6 +29,7 @@ class EthosApp extends StatelessWidget { //now stateful 'coz scrollbar
     debugShowCheckedModeBanner: false,
     title: 'Ethos Lab - Hogwarts meets Wakanda!',
     theme: ThemeData(primarySwatch: Colors.teal),
+
     home: MainScreen(), //becomes the route named '/'
     routes: <String, WidgetBuilder> {
         //'/homepage': (context) => LandingPage(), //The home screen contains log-in
@@ -75,57 +76,54 @@ class _MainScreenState extends State<MainScreen> {
   Widget build(BuildContext context) {
   
                 return Scaffold(
-               
+               //HeaderWidget(),
                 backgroundColor:  Colors.white, //prev .white
                 body: Stack(
         
                 
                 children: <Widget>[
                       Container(
+                      //padding: const EdgeInsets.symmetric(vertical: 16),
                       child: SingleChildScrollView(
                           //Assign the controller to my scrollable widget  
                           controller: _controller,  
+                          //column lets us stack containers vertically
                           child: Column(  
                             children: [ 
-                             
+                             //padding: EdgeInsets.only(top: 0),
+
                                  HeaderWidget(),
                           
-                              
                               Container(
                                  
-                                width: 800, //change from 200
-                                height: 200.0,
-                                
-      
-     // new Text("Ethọ́s Lab exists to empower youth to transform community and shift culture."),
+                                  padding: const EdgeInsets.all(20.0),
+                                  color: Colors.teal,
+                                  child: Text(
+                                    'Hogwarts meets Wakanda',
+                                    //'youth space reimagined',
+                                    style: TextStyle(fontSize: 40.0, fontWeight: FontWeight.bold),
+                                    ),
+                                    ),
+                                  
+                              //now add image and sign up page
 
-
-                                decoration: BoxDecoration(
-                                shape: BoxShape.rectangle,
+                              Container(
+                                 
+                                //width: 800, //change from 200
+                                width: MediaQuery.of(context).size.width, 
+                                height: 800.0,
+                   
+                             decoration: BoxDecoration(
+                              
                                image: DecorationImage(
                                fit: BoxFit.cover,
                                       
-                                      //image: new NetworkImage('images/ethosLogo.jpg'),
-                                      image: new NetworkImage(
-                                     "https://static1.squarespace.com/static/5d1e0e9d2a98da000182d011/t/5e549279b2919a79f2a866d4/1595529564053/?format=1500w"
-                                //change image to app logo
-                               )
-  //],
-                                ))),
-                                
-                                Container(
-                                 
-                                  padding: const EdgeInsets.all(20.0),
-                                  
-                                  child: Text(
-                                    'Hogwarts x Wakanda',
-                                    //'youth space reimagined',
-                                    style: TextStyle(fontSize: 24.0, fontWeight: FontWeight.bold),
-                                    ),
-                      
-                                  ),
-                                  
-                                  
+                                      image: AssetImage('images/ethos_team.jpg'),
+                                      //change to atlanthos logo
+                              )
+                             ),
+                              ),
+                                                            
                                   Container(
                                  
                                   padding: const EdgeInsets.all(20.0),
@@ -154,7 +152,7 @@ class _MainScreenState extends State<MainScreen> {
                                 alignment: Alignment.center,
                                 child: 
                                  Text(
-                                    'The Ethos Lab exists to foster cultural innovation for youth aged 13 - 18, by providing a safe and accessible tech-infused environment that allows them explore the fullest expressions of their authentic selves. \n\nLeveraging the "Internet of Things", applications, web-based tools and other technology, these environments will address the need for youth to own a stake in their digital future. \n\nOur Vision is that all youth are free to explore the fullest expressions of their authentic selves. ',
+                                    'The Ethọ́s Lab exists to foster cultural innovation for youth aged 13 - 18, by providing a safe and accessible tech-infused environment that allows them explore the fullest expressions of their authentic selves. \n\nLeveraging the "Internet of Things", applications, web-based tools and other technology, these environments will address the need for youth to own a stake in their digital future. \n\nOur Vision is that all youth are free to explore the fullest expressions of their authentic selves. ',
                                     //'youth space reimagined',
                                     style: TextStyle(
                                       fontSize: 18.0, 
@@ -225,20 +223,7 @@ class _MainScreenState extends State<MainScreen> {
                                     ),
 
                               ),
-                              
-                              Container(  //mediaquery gets responsive height of screen
-                                height: 400,  
-                                width: MediaQuery.of(context).size.width,  
-                                color: Colors.teal,  
-                                //first row showing images
-                                child: new Row(
-       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-  children: [
-    Image.asset('images/EthosLabMarylou 1_2007165883.jpg'),
-    Image.asset('images/image 5_2007165883.jpg'),
-  ],
-      ),
-                                ),
+                          
                               
                               Container(  //mediaquery gets responsive height of screen
                                 height: 400,  
@@ -248,8 +233,8 @@ class _MainScreenState extends State<MainScreen> {
                                 child: new Row(
                                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                                    children: [
-                                     Image.asset('images/EthosLabMarylou 1_2007165883.jpg'),
-                                     Image.asset('images/image 5_2007165883.jpg'),
+                                     Image.asset('images/EthosLabMarylou1_2007165883.jpg'),
+                                     Image.asset('images/image5_2007165883.png'),
                                      ],
                                      ),
                                 ),

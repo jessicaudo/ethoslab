@@ -6,19 +6,19 @@ enum NavLinks { Home, EthosLab, Events, GitHub, LogIn, Support }
 String displayString(NavLinks link) {
   switch (link) {
     case NavLinks.Home:
-      return "Home";
+      return "DASHBOARD";
       break;
 
     case NavLinks.GitHub:
-      return "GitHub";
+      return "CONTRIBUTE";
       break;
 
     case NavLinks.Events:
-      return "Events";
+      return "EVENTS";
       break;
 
     case NavLinks.EthosLab:
-      return "EthosLab";
+      return "ETHOS LAB";
       break;
 
     case NavLinks.LogIn:
@@ -26,7 +26,7 @@ String displayString(NavLinks link) {
       break;
 
     case NavLinks.Support:
-      return "Support";
+      return "SUPPORT";
       break;
 
     default:
